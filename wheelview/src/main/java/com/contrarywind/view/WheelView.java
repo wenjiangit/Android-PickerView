@@ -437,7 +437,7 @@ public class WheelView extends View {
         //只显示选中项Label文字的模式，并且Label文字不为空，则进行绘制
         if (!TextUtils.isEmpty(label) && isCenterLabel) {
             //绘制文字，靠右并留出空隙
-            int drawRightContentStart = measuredWidth/2 + 10;
+            int drawRightContentStart = measuredWidth/2 + 20;
             canvas.drawText(label, drawRightContentStart - CENTER_CONTENT_OFFSET, centerY, paintCenterText);
         }
 
@@ -591,7 +591,7 @@ public class WheelView extends View {
         switch (mGravity) {
             case Gravity.CENTER://显示内容居中
                 if (isOptions || label == null || label.equals("") || !isCenterLabel) {
-                    drawCenterContentStart = (int) (measuredWidth/2 - rect.width());
+                    drawCenterContentStart = (int) (measuredWidth/2 - rect.width()/2);
                 } else {//只显示中间label时，时间选择器内容偏左一点，留出空间绘制单位标签
                     drawCenterContentStart = (int) ((measuredWidth - rect.width()) * 0.25);
                 }
@@ -611,7 +611,7 @@ public class WheelView extends View {
         switch (mGravity) {
             case Gravity.CENTER:
                 if (isOptions || label == null || label.equals("") || !isCenterLabel) {
-                    drawOutContentStart = (int) ((measuredWidth - rect.width()) * 0.5);
+                    drawOutContentStart = (int) (measuredWidth/2 - rect.width()/2);
                 } else {//只显示中间label时，时间选择器内容偏左一点，留出空间绘制单位标签
                     drawOutContentStart = (int) ((measuredWidth - rect.width()) * 0.25);
                 }
