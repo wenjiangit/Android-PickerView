@@ -437,7 +437,7 @@ public class WheelView extends View {
         //只显示选中项Label文字的模式，并且Label文字不为空，则进行绘制
         if (!TextUtils.isEmpty(label) && isCenterLabel) {
             //绘制文字，靠右并留出空隙
-            int drawRightContentStart = (int)(measuredWidth/2 + 10+ CENTER_CONTENT_OFFSET);
+            int drawRightContentStart = measuredWidth/2 + dp2px(10);
             canvas.drawText(label, drawRightContentStart, centerY, paintCenterText);
         }
 
@@ -796,5 +796,10 @@ public class WheelView extends View {
     @Override
     public Handler getHandler() {
         return handler;
+    }
+    
+     private int dp2px(float dp) {
+        float density = getContext().getResources().getDisplayMetrics().density;
+        return Math.round(density * dp);
     }
 }
